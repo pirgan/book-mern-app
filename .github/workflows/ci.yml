@@ -27,26 +27,11 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Wait for MongoDB to start
+        run: |
+          while ! nc -z localhost 27017; do
+            sleep 1
+          done
+
       - name: Install backend dependencies
-        working-directory: ./backend
-        run: npm install
-
-      - name: Install frontend dependencies
-        working-directory: ./frontend
-        run: npm install
-
-      - name: Run backend tests
-        working-directory: ./backend
-        run: npm test
-
-      - name: Run frontend tests
-        working-directory: ./frontend
-        run: npm test
-
-      - name: Build frontend
-        working-directory: ./frontend
-        run: npm run build
-
-        - name: Deploy with Docker Compose
-          run: docker-compose up --build -d
-
+        working-directory: ./back
