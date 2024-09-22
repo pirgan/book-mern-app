@@ -20,12 +20,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  
 
-      - name: Set up Node.js
+
+      - name: Set up Node.js (using node20)
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '20'  # Update to 20
 
       - name: Wait for MongoDB to start
         run: |
