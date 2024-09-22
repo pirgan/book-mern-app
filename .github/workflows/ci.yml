@@ -33,5 +33,6 @@ jobs:
             sleep 1
           done
 
-      - name: Install backend dependencies
-        working-directory: ./back
+      - name: Deploy with Docker Compose
+        run: docker-compose up --build -d
+        
